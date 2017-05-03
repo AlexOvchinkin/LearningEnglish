@@ -3,6 +3,9 @@
 class ControllerExamination {
 
     public function actionShow() {
-        echo 'Hello from ControllerExamination !!!';
+        $model = new ModelExamination(1);
+        $words = $model->getWordsList();
+
+       include_once ROOT.'/views/ViewExamination.php';
     }
 }

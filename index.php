@@ -8,7 +8,9 @@ spl_autoload_register(function ($className) {
 
     $folders = array(
         '/',
-        '/controllers/'
+        '/components/',
+        '/controllers/',
+        '/models/'
     );
 
     foreach ($folders as $folder) {
