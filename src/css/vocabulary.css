@@ -1,0 +1,109 @@
+.vocabulary-selected {
+    outline: 2px solid lightgreen;
+}
+
+.vocabulary {
+    z-index: -1;
+    margin: 80px auto 0 auto;
+    box-shadow: 0 0 5px 0 gray;
+    width: 80%;
+    background-color: white;
+}
+
+.vocabulary__panel {
+    background-color: orangered;
+    border-bottom: 1px solid lightblue;
+    background-color: coral;
+    height: 62px;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.vocabulary__train-btn {
+    color: white;
+    background-color: coral;
+    border-radius: 2px;
+    height: 42px;
+    width: 180px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 22px;
+    cursor: pointer;
+    transition: 0.2s background-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.vocabulary__train-btn:hover {
+    background-color: #994d45;
+}
+
+.vocabulary__list {
+    display: flex;
+    list-style: none;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding: 10px;
+    background-color: white;
+    margin: 0;
+}
+
+.vocabulary__item {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    min-width: 200px;
+    border: 1px solid lightgray;
+    border-radius: 2px;
+    margin: 5px;
+    padding: 10px 0 10px 10px;
+    box-shadow: 0 0 5px 0 lightgray;
+}
+
+.vocabulary__text {
+    margin: 0 15px 0 10px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.vocabulary__en-word {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.vocabulary__ru-word {
+    margin: 10px 0 0 0;
+    color: #707070;
+    font-size: 15px;
+    font-style: italic;
+}
+
+.vocabulary__img {
+    margin: 0 5px 0 0;
+    cursor: pointer;
+}
+
+.vocabulary__sound {
+    border-radius: 50%;
+    box-shadow: 0 0 5px 0 gray;
+    background: url("../image/sound.png") no-repeat;
+    width: 48px;
+    height: 48px;
+    transition: 0.3s background-image;
+}
+
+.vocabulary__sound:hover {
+    background: url("../image/sound_hover.png") no-repeat;
+}
+
+.vocabulary__trash {
+    transform: scale(0.7);
+    border-radius: 50%;
+    transition: 0.3s box-shadow;
+}
+
+.vocabulary__trash:hover {
+    box-shadow: 0 0 5px 2px gray;
+
+}

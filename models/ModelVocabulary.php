@@ -1,6 +1,6 @@
 <?php
 
-class ModelExamination {
+class ModelVocabulary {
 
     private $user_id;
 

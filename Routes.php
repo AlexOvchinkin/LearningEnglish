@@ -1,7 +1,7 @@
 <?php
 
 return array(
-    "examination" => "ControllerExamination/actionShow",
+    "vocabulary" => "ControllerVocabulary/actionShow",
     "^/$" => "ControllerMain/actionShow"
 );
 
