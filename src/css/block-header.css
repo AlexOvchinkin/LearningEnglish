@@ -5,7 +5,7 @@ body {
     background: url("../image/vocabulary_background.png") no-repeat center;
     background-size: cover;
     margin: 0;
-    height: calc(100vh - 80px);
+    height: 100vh;
 }
 
 .block-header {
@@ -30,11 +30,13 @@ body {
     color: #e3e7ed;
 }
 
-.block-header__logo-text {
+.block-header__logo-text-link {
     font-size: 32px;
     margin: 0 40px 0 0;
     font-weight: bold;
     font-family: 'Gloria Hallelujah', cursive;
+    color: #e3e7ed;
+    text-decoration: none;
 }
 
 .block-header__link {
@@ -45,9 +47,15 @@ body {
     text-decoration: none;
 }
 
-.block-header__logo-picture {
+.block-header__logo-link {
     margin: 0 20px;
     height: 75%;
     box-shadow: 0 0 5px 2px #244c8c;
     border-radius: 50%;
+}
+
+.block-header__logo-picture {
+    height: 100%;
+    border-radius: 50%;
+    box-shadow: 0 0 5px 2px #244c8c inset;
 }

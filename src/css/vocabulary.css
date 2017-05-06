@@ -4,7 +4,8 @@
 
 .vocabulary {
     z-index: -1;
-    margin: 80px auto 0 auto;
+    margin: 0 auto;
+    transform: translateY(80px);
     box-shadow: 0 0 5px 0 gray;
     width: 80%;
     background-color: white;
