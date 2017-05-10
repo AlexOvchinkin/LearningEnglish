@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah');
 @import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Roboto');
 
+.xdebug-error xe-notice {
+    transform: translateY(80px);
+}
+
 body {
     background: url("../image/vocabulary_background.png") no-repeat center;
     background-size: cover;

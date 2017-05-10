@@ -1,5 +1,6 @@
 .vocabulary-selected {
     outline: 2px solid lightgreen;
+    background-color: #e0f8ff;
 }
 
 .vocabulary {
@@ -60,6 +61,11 @@
     margin: 5px;
     padding: 10px 0 10px 10px;
     box-shadow: 0 0 5px 0 lightgray;
+    transition: 0.2s background-color;
+}
+
+.vocabulary__item:hover {
+    background-color: #e0f8ff;
 }
 
 .vocabulary__text {

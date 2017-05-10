@@ -6,6 +6,7 @@ class Router {
 
         $uri = $_SERVER['REQUEST_URI'];
         $routes = include_once ROOT.'/Routes.php';
+        $notFound = true;
 
         foreach ($routes as $path => $route) {
             if (preg_match("~$path~", $uri) === 1) {
@@ -16,9 +17,14 @@ class Router {
                 $actionName = array_shift($routeArray);
 
                 call_user_func_array(array($controller, $actionName), $routeArray);
+                $notFound = false;
                 break;
             }
         }
 
+        if ($notFound) {
+            header("Location: /404");
+            exit();
+        }
     }
 }

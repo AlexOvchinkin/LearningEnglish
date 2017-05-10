@@ -2,10 +2,14 @@
 
 class ControllerVocabulary {
 
-    public function actionShow() {
-        $model = new ModelVocabulary(1);
-        $words = $model->getWordsList();
+    private $model;
 
-       include_once ROOT . '/views/ViewVocabulary.php';
+    public function __construct() {
+        $this->model = new ModelVocabulary(1);
+    }
+
+    public function actionShow() {
+        $words = $this->model->getWordsList();
+        include_once ROOT . '/views/ViewVocabulary.php';
     }
 }

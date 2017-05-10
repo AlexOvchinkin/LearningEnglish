@@ -1,0 +1,55 @@
+.not-found {
+    transform: translateY(100px);
+    box-shadow: 0 0 5px 2px lightgray;
+    margin: 0 auto;
+    width: 60%;
+    background-color: white;
+    border-radius: 2px;
+    padding: 20px 10px 40px 10px;
+}
+
+.not-found__header {
+    text-align: center;
+    font-family: 'Gloria Hallelujah', cursive;
+    font-size: 50px;
+    color: darkslategray;
+}
+
+.not-found__text {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    color: darkslategray;
+    font-size: 30px;
+}
+
+.not-found__link {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    color: darkslategray;
+    font-size: 20px;
+    text-decoration: underline;
+    display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

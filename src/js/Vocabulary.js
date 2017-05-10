@@ -18,7 +18,7 @@ class Vocabulary {
     }
 
     btnTrainClick(ev) {
-        ev.preventDefault();
+        window.location.href = '/training';
     }
 }
 

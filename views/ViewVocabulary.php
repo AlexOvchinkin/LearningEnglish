@@ -1,4 +1,7 @@
-<?php include_once ROOT . '/views/Header.php'; ?>
+<?php
+    $vocabularyPage = true;
+    include_once ROOT . '/views/Header.php';
+?>
 
 <main>
     <div class="vocabulary">
