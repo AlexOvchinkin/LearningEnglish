@@ -9,6 +9,10 @@ class ControllerVocabulary {
     }
 
     public function actionShow() {
+        if (isset($_SESSION['words_array'])) {
+            unset($_SESSION['words_array']);
+        }
+
         $words = $this->model->getWordsList();
         include_once ROOT . '/views/ViewVocabulary.php';
     }

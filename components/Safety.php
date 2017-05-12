@@ -10,11 +10,9 @@ class Safety {
         }
     }
 
-    public static function checkToken() {
-        if (isset($_SESSION['CSRF-Token']) && isset($_COOKIE['CSRF-Token'])) {
-            if ($_SESSION['CSRF-Token'] == $_COOKIE['CSRF-Token']) {
-                return true;
-            }
+    public static function checkToken($token) {
+        if (isset($_SESSION['CSRF-Token']) && $_SESSION['CSRF-Token'] == $token) {
+            return true;
         }
 
         return false;

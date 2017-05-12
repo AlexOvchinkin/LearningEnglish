@@ -1,8 +1,8 @@
 <?php
 
 return array(
-    'TranslateEnglishRussian'
-    //'TranslateRussianEnglish',
+    'TranslateEnglishRussian',
+    'TranslateRussianEnglish'
     //'Puzzle'
 );
 

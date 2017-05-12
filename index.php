@@ -10,6 +10,9 @@ define('MODE_TRAINING', 1);
 define('MODE_NO_WORDS', 2);
 define('MODE_END_TRAINING', 3);
 
+define('WRONG_ANSWER', 0);
+define('RIGHT_ANSWER', 1);
+
 session_start();
 
 spl_autoload_register(function ($className) {

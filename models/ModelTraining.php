@@ -16,7 +16,12 @@ class ModelTraining {
 
     # function getWordsArray
     public function getWordsArray($numWords) {
-        $wordsArray = DB::getWordsArray($this->user_id, $numWords);
+        $wordsArray = DB::getWordsArray($this->user_id, DIFF_SUCCESS_DATE, $numWords);
+
+        if (count($wordsArray) == 0) {
+            return null;
+        }
+
         $checkArray = array();
         $arrayOfAlgorithmes = include_once ROOT . '/Algorithmes.php';
 
@@ -33,6 +38,11 @@ class ModelTraining {
 
         usort($checkArray, array($this, "cmp"));
         return $checkArray;
+    }
+
+    # function getCountRemainedWords
+    public function getCountRemainedWords() {
+        return DB::getWordsCount($this->user_id, DIFF_SUCCESS_DATE);
     }
 
 }

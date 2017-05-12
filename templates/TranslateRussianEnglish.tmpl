@@ -1,6 +1,25 @@
-<section class="block-train">
-    <h2>(TranslateRussianEnglish)</h2>
-    <p>
-        {{ word }}
+<section class="translate">
+    <h2 class="translate__title-main">Перевод</h2>
+    <h4 class="translate__title-descr">[ с русского на английский ]</h4>
+    <p class="translate__main-word" data-translate="{{ enWord }}">
+        {{ ruWord }}
+    </p>
+    <ul class="translate__list">
+        {% for word in checkWords %}
+        <li class="translate__check-word"  data-translate="{{ word.en }}"  data-check="true">
+                <span class="translate__num">
+                    ({{ word.counter }})&nbsp;&nbsp;
+                </span>
+            {{ word.en }}
+        </li>
+        {% endfor %}
+    </ul>
+    <p class="translate__description">
+        <sup>*&nbsp;</sup>
+        выберите мышкой слово ... или нажмите номер слова на клавиатуре
+    </p>
+    <p class="translate__description">
+        <sup>**&nbsp;</sup>
+        не забудьте включить звук, чтобы слышать произношение
     </p>
 </section>

@@ -2,11 +2,25 @@
 
 class Api {
 
-    public function onWrongEnRuAnswer() {
-        if (Safety::checkToken()) {
-            echo 'DONE';
-        } else {
-            echo "ERROR - not equal (" . $_SESSION['CSRF-Token'] . " - " . $_COOKIE['CSRF-Token'];
+    public function onEnRuAnswer() {
+        try {
+            $headers = getallheaders();
+
+            if (isset($headers['CSRF-Token'])) {
+                if (Safety::checkToken($headers['CSRF-Token'])) {
+                    if (isset($_POST['ANSWER'])) {
+                        if (ControllerTraining::modifyWordsArray($_POST['ANSWER'])) {
+                            echo '/training';
+                            exit();
+                        }
+                    }
+                }
+            }
+
+            echo '/404';
+
+        } catch (Exception $e) {
+            echo '/404';
         }
     }
 }

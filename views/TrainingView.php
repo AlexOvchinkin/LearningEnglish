@@ -9,13 +9,21 @@ include_once ROOT . '/views/Header.php';
 
 if ($mode == MODE_END_TRAINING) {
 
-    echo $twig->render('EndTraining.tmpl');
+    echo $twig->render('EndTraining.tmpl', array(
+        "remainedWords" => $remainedWords
+    ));
 
 } elseif ($mode == MODE_TRAINING) {
 
     if (isset($trainingData)) {
+        $enWord = $trainingData['en_word'];
+        $ruWord = $trainingData['ru_word'];
+        $checkWords = DB::parseCheckWords($trainingData['check_words']);
+
         echo $twig->render($trainingData['template'] . '.tmpl', array(
-                'word' => 'Hello I am from TWIG template !!!')
+                'enWord' => $enWord,
+                'ruWord' => $ruWord,
+                'checkWords' => $checkWords)
         );
     }
 }

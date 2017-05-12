@@ -17,6 +17,7 @@ class DB {
         return $connection;
     }
 
+    # function getAllWords
     public static function getAllWords($user_id) {
         if (!empty($user_id)) {
             $connection = DB::getConnection();
@@ -44,7 +45,8 @@ class DB {
         return null;
     }
 
-    public static function getWordsArray($user_id, $numWords) {
+    # function getWordsArray
+    public static function getWordsArray($user_id, $dateDiff, $limit) {
         if (!empty($user_id)) {
             $connection = DB::getConnection();
 
@@ -53,6 +55,7 @@ class DB {
                           user_vocabulary.word_id AS id,
                           vocabulary.en_word,
                           vocabulary.ru_word,
+                          vocabulary.check_words,
                           user_vocabulary.success_date,
                           user_vocabulary.success_percent
                         FROM
@@ -60,17 +63,18 @@ class DB {
                                 LEFT JOIN
                             quick_english.vocabulary AS vocabulary ON (user_vocabulary.word_id = vocabulary.id)
                         WHERE
-                            CAST((UNIX_TIMESTAMP(CURRENT_DATE()) - UNIX_TIMESTAMP(user_vocabulary.success_date)) / 3600 / 24
-                                  AS SIGNED) > :DIFF_SUCCESS_DATE
-                                OR success_percent < 100
+                            user_vocabulary.user_id = :user_id
+                            AND 
+                            (CAST((UNIX_TIMESTAMP(CURRENT_DATE()) - UNIX_TIMESTAMP(user_vocabulary.success_date)) 
+                            / 3600 / 24 AS SIGNED) > :DIFF_SUCCESS_DATE
+                            OR success_percent < 100)
                         LIMIT :LIMIT";
-
 
                 $stm = $connection->prepare($sql);
 
-                $diff = DIFF_SUCCESS_DATE;
-                $stm->bindParam(':DIFF_SUCCESS_DATE', $diff, PDO::PARAM_INT);
-                $stm->bindParam(':LIMIT', $numWords, PDO::PARAM_INT);
+                $stm->bindParam(':DIFF_SUCCESS_DATE', $dateDiff, PDO::PARAM_INT);
+                $stm->bindParam(':LIMIT', $limit, PDO::PARAM_INT);
+                $stm->bindParam(':user_id', $user_id, PDO::PARAM_INT);
 
                 $stm->execute();
 
@@ -79,6 +83,56 @@ class DB {
         }
 
         return null;
+    }
+
+    # function parseCheckWords
+    public static function parseCheckWords($parseString) {
+        $result = array();
+        $arrayOfPairs = explode('-', $parseString);
+        $counter = 1;
+
+        foreach ($arrayOfPairs as $value) {
+            $pair = explode('/', $value);
+            $newElement = array("counter" => $counter++, "en" => $pair[0], "ru" => $pair[1]);
+            $result[] = $newElement;
+        }
+
+        return $result;
+    }
+
+    # function getWordsCount
+    public static function getWordsCount($user_id, $dateDiff) {
+        if (!empty($user_id)) {
+            $connection = DB::getConnection();
+
+            if (isset($connection)) {
+                $sql = "SELECT 
+                          COUNT(user_vocabulary.word_id) as id
+                        FROM
+                            quick_english.user_vocabulary AS user_vocabulary
+                        WHERE
+                            user_vocabulary.user_id = :user_id
+                            AND 
+                            (CAST((UNIX_TIMESTAMP(CURRENT_DATE()) - UNIX_TIMESTAMP(user_vocabulary.success_date)) 
+                            / 3600 / 24 AS SIGNED) > :DIFF_SUCCESS_DATE
+                            OR success_percent < 100)";
+
+                $stm = $connection->prepare($sql);
+
+                $stm->bindParam(':DIFF_SUCCESS_DATE', $dateDiff, PDO::PARAM_INT);
+                $stm->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+
+                $stm->execute();
+
+                if ($row = $stm->fetch(PDO::FETCH_ASSOC)) {
+                    return $row['id'];
+                }
+
+                return 0;
+            }
+        }
+
+        return 0;
     }
 }
 
