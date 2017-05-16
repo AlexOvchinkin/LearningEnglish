@@ -3,7 +3,7 @@
 return array(
     "vocabulary" => "ControllerVocabulary/actionShow",
     "training" => "ControllerTraining/actionShow",
-    "api/onEnRuAnswer" => "Api/onEnRuAnswer",
+    "api/onAnswer" => "Api/onAnswer",
     "404" => "ControllerOther/actionShow/404",
     "^/$" => "ControllerMain/actionShow"
 );

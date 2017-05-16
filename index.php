@@ -20,6 +20,7 @@ spl_autoload_register(function ($className) {
     $folders = array(
         '/',
         '/components/',
+        '/components/AlgorithmesClasses/',
         '/controllers/',
         '/models/'
     );

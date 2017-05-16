@@ -1,0 +1,23 @@
+<section class="selection" data-word="{{ enWord }}">
+    <h2 class="selection__title-main">ПОДБОР</h2>
+    <h4 class="selection__title-descr">[ по словам ]</h4>
+    <ul class="selection__checklist">
+
+        {% for item in checkWord %}
+            {% if item.letter is empty %}
+                <li class="selection__check-word  selection-hidden  selection__empty" id='letter-{{item.num}}'>
+                    {{ item.letter }}
+                </li>
+            {% else %}
+                <li class="selection__check-word  selection-hidden" id='letter-{{item.num}}'>
+                    {{ item.letter }}
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+    <ul class="selection__pick-list">
+        {% for item in pickWord %}
+            <li class="selection__pick-word">{{ item }}</li>
+        {% endfor %}
+    </ul>
+</section>

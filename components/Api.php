@@ -2,7 +2,7 @@
 
 class Api {
 
-    public function onEnRuAnswer() {
+    public function onAnswer() {
         try {
             $headers = getallheaders();
 

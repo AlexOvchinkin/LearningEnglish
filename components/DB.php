@@ -85,21 +85,6 @@ class DB {
         return null;
     }
 
-    # function parseCheckWords
-    public static function parseCheckWords($parseString) {
-        $result = array();
-        $arrayOfPairs = explode('-', $parseString);
-        $counter = 1;
-
-        foreach ($arrayOfPairs as $value) {
-            $pair = explode('/', $value);
-            $newElement = array("counter" => $counter++, "en" => $pair[0], "ru" => $pair[1]);
-            $result[] = $newElement;
-        }
-
-        return $result;
-    }
-
     # function getWordsCount
     public static function getWordsCount($user_id, $dateDiff) {
         if (!empty($user_id)) {

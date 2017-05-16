@@ -57,7 +57,7 @@ class Translate {
 
         if (csrfCookie) {
             let xhr = new XMLHttpRequest();
-            xhr.open('POST', '/api/onEnRuAnswer');
+            xhr.open('POST', '/api/onAnswer');
             xhr.setRequestHeader("CSRF-Token", csrfCookie[1]);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 

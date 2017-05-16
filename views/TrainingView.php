@@ -16,15 +16,10 @@ if ($mode == MODE_END_TRAINING) {
 } elseif ($mode == MODE_TRAINING) {
 
     if (isset($trainingData)) {
-        $enWord = $trainingData['en_word'];
-        $ruWord = $trainingData['ru_word'];
-        $checkWords = DB::parseCheckWords($trainingData['check_words']);
+        $className = $trainingData['template'];
+        $classObject = new $className($trainingData);
 
-        echo $twig->render($trainingData['template'] . '.tmpl', array(
-                'enWord' => $enWord,
-                'ruWord' => $ruWord,
-                'checkWords' => $checkWords)
-        );
+        echo $twig->render($classObject->getTemplate(), $classObject->getParams());
     }
 }
 

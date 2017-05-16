@@ -23,7 +23,7 @@ class ModelTraining {
         }
 
         $checkArray = array();
-        $arrayOfAlgorithmes = include_once ROOT . '/Algorithmes.php';
+        $arrayOfAlgorithmes = Algorithm::getAlgorithmesArray();
 
         if (isset($wordsArray)) {
             foreach ($wordsArray as $value) {
