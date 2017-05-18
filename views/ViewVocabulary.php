@@ -29,5 +29,5 @@
     </div>
 </main>
 
-<script src="../src/js/Vocabulary.js?<?php echo time(); ?>"></script>
+<script src="../src/js/public/Vocabulary.js?<?php echo time(); ?>"></script>
 <?php include_once ROOT . '/views/Footer.php'; ?>
