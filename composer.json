@@ -1,0 +1,13 @@
+{
+    "name": "alex/www",
+    "description": "My project",
+    "authors": [
+        {
+            "name": "AlexOvchinkin",
+            "email": "al.ovchinkin@gmail.com"
+        }
+    ],
+    "require": {
+        "twig/twig": "^2.0"
+    }
+}
