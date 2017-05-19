@@ -1,10 +1,10 @@
 <?php
 
 return array(
-    "vocabulary" => "ControllerVocabulary/actionShow",
-    "training" => "ControllerTraining/actionShow",
+    "vocabulary" => "ControllerVocabulary",
+    "training" => "ControllerTraining",
     "api/onAnswer" => "Api/onAnswer",
-    "404" => "ControllerOther/actionShow/404",
-    "^/$" => "ControllerMain/actionShow"
+    "404" => "ControllerOther/404",
+    "^/$" => "ControllerMain"
 );
 

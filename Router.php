@@ -14,9 +14,8 @@ class Router {
                 $routeArray = explode('/', $routeString);
                 $controllerName = array_shift($routeArray);
                 $controller = new $controllerName();
-                $actionName = array_shift($routeArray);
 
-                call_user_func_array(array($controller, $actionName), $routeArray);
+                call_user_func_array(array($controller, 'actionShow'), $routeArray);
                 $notFound = false;
                 break;
             }

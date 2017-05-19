@@ -1,8 +1,8 @@
 <?php
 
-class ControllerOther {
+class ControllerOther extends Controller {
 
-    public function actionShow($num) {
+    public function actionShow($param = null) {
 
         $header = '404';
         $text = 'Такая страница не найдена!';

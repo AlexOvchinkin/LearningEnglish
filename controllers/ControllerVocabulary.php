@@ -1,6 +1,6 @@
 <?php
 
-class ControllerVocabulary {
+class ControllerVocabulary extends Controller {
 
     private $model;
 
