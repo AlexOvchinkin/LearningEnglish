@@ -4,9 +4,8 @@ module.exports = {
     entry: {
         AJAX: "./AJAX",
         Selection: "./Selection",
-        TranslateEnglishRussian: "./TranslateEnglishRussian",
-        TranslateRussianEnglish: "./TranslateRussianEnglish",
         Vocabulary: "./Vocabulary",
+        Translate: "./Translate"
     },
     devtool: "source-map",
     output: {
