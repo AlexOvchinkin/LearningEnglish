@@ -6,7 +6,8 @@ class Selection extends Algorithm {
         return array(
             'enWord' => $this->data['en_word'],
             'checkWord' => $this->parseCheckWord($this->data['en_word']),
-            'pickWord' => $this->parsePickWord($this->data['en_word'])
+            'pickWord' => $this->parsePickWord($this->data['en_word']),
+            'csrfToken' => CSRF::getSessionToken()
         );
     }
 

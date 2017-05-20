@@ -1,3 +1,6 @@
+import { WRONG_ANSWER, RIGHT_ANSWER } from './constants'
+import AJAX from './AJAX'
+
 class Selection {
 
     constructor(element) {
@@ -9,6 +12,7 @@ class Selection {
 
         this.currentWord = element.getAttribute('data-word');
         this.element = element;
+        this.csrfToken = this.element.querySelector('.csrf-token');
 
         this.pickList = element.querySelector(".selection__pick-list");
         this.pickList.addEventListener("click", this.pickListClick.bind(this));
@@ -35,8 +39,8 @@ class Selection {
             }
 
             if (this.currentLetter == this.currentWord.length) {
-                const status = this.rightAnswer ? this.RIGHT : this.WRONG;
-                this.sendResult(status);
+                const status = this.rightAnswer ? RIGHT_ANSWER : WRONG_ANSWER;
+                AJAX.sendResult(status, this.csrfToken.value);
             }
         }
     }
@@ -74,26 +78,6 @@ class Selection {
 
         if(letter) {
             letter.classList.remove('selection-hidden');
-        }
-    }
-
-    sendResult(status) {
-        let csrfCookie = document.cookie.match(/CSRF-Token=([\w-]+)/);
-
-        if (csrfCookie) {
-            let xhr = new XMLHttpRequest();
-            xhr.open('POST', '/api/onAnswer');
-            xhr.setRequestHeader("CSRF-Token", csrfCookie[1]);
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
-            const param = "ANSWER=" + status;
-            xhr.send(param);
-
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState > 3 && xhr.status == 200) {
-                    window.location.href = xhr.responseText;
-                }
-            }
         }
     }
 }

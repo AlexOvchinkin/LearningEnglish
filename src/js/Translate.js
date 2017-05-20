@@ -1,4 +1,4 @@
-import { WRONG_ANSWER, RIGHT_ANSWER } from './constatns'
+import { WRONG_ANSWER, RIGHT_ANSWER } from './constants'
 import AJAX from './AJAX'
 
 class Translate {
@@ -7,6 +7,7 @@ class Translate {
         this.element = element;
         this.mainWord = this.element.querySelector('.translate__main-word');
         this.checkButtons = this.element.querySelectorAll('.translate__check-word');
+        this.csrfToken = this.element.querySelector('.csrf-token');
 
         this.element.addEventListener('click', (ev) => {
             let element = ev.target.closest('.translate__check-word');
@@ -20,11 +21,11 @@ class Translate {
 
                     if (element.dataset.translate == this.mainWord.dataset.translate) {
                         this.setRightResult(element);
-                        AJAX.sendResult(RIGHT_ANSWER);
+                        AJAX.sendResult(RIGHT_ANSWER, this.csrfToken.value);
                     } else {
                         this.setWrongResult(element);
                         setTimeout(() => {
-                            AJAX.sendResult(WRONG_ANSWER);
+                            AJAX.sendResult(WRONG_ANSWER, this.csrfToken.value);
                         }, 2000);
                     }
                 }

@@ -33,7 +33,7 @@ spl_autoload_register(function ($className) {
     }
 });
 
-Safety::renewToken();
+CSRF::generateNewSecretPhrase();
 
 $router = new Router();
 $router->run();
