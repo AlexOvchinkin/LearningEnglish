@@ -5,7 +5,8 @@ module.exports = {
         AJAX: "./AJAX",
         Selection: "./Selection",
         Vocabulary: "./Vocabulary",
-        Translate: "./Translate"
+        Translate: "./Translate",
+        Registration: "./Registration"
     },
     devtool: "source-map",
     output: {

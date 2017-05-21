@@ -17,7 +17,11 @@
     <?php endif; ?>
 
     <?php if (isset($trainingData)) : ?>
-        <link rel="stylesheet" href="../src/css/<?php echo $trainingData['template'].'.css?'.time(); ?>">
+        <link rel="stylesheet" href="../src/css/<?php echo $trainingData['template'] . '.css?' . time(); ?>">
+    <?php endif; ?>
+
+    <?php if (isset($registrationPage)) : ?>
+        <link rel="stylesheet" href="../src/css/registration.css?<?php echo time(); ?>">
     <?php endif; ?>
 </head>
 <body>
@@ -34,9 +38,14 @@
             СЛОВАРЬ
         </a>
     </div>
-    <a class="block-header__link  block-header__right-part" href="#">
-        ВОЙТИ
-    </a>
+    <div class="block-header__right-part">
+        <a class="block-header__link" href="#">
+            ВХОД
+        </a>
+        <a class="block-header__link" href="/registration">
+            РЕГИСТРАЦИЯ
+        </a>
+    </div>
 </header>
 
 

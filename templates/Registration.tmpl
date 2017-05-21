@@ -1,0 +1,55 @@
+<form class="registration" method="post" action="/registration/register">
+    <h2 class="registration__title">РЕГИСТРАЦИЯ</h2>
+    <input type="hidden" name="csrf-token" value="{{ csrfToken }}">
+    <p class="registration__notice" id="notice"></p>
+
+    <table class="registration__table" cellspacing="10" cellpadding="5">
+        <tr>
+            <td><label class="registration__text" for="name">Имя</label></td>
+            <td><input class="registration__field" type="text" id="name" name="name"></td>
+        </tr>
+        <tr>
+            <td><label class="registration__text" for="email">Почта</label></td>
+            <td><input class="registration__field" type="email" id="email" name="email"></td>
+        </tr>
+        <tr>
+            <td><label class="registration__text" for="password">Пароль</label></td>
+            <td><input class="registration__field" type="password" id="password" name="password"></td>
+        </tr>
+        <tr>
+            <td nowrap><label class="registration__text" for="password-repeat" id="password-repeat-label">Повторите
+                пароль</label></td>
+            <td><input class="registration__field" type="password" id="password-repeat" name="password-repeat"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <label class="registration__text" for="remember">Запомнить меня
+                    <input class="registration__remember-box" type="checkbox" id="remember" name="remember">
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="registration__cell-btn">
+                <button class="registration__btn" type="submit" name="submit">ЗАРЕГИСТРИРОВАТЬСЯ</button>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="registration__cell-btn">
+                <button class="login__btn" type="button" name="btn-login">я уже зарегистрирован</button>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2"><span class="registration__descr"><sup>* </sup>все поля обязательны к заполнению</span></td>
+        </tr>
+        <tr>
+            <td colspan="2"><span class="registration__descr"><sup>* </sup>пароль должен содержать только английские буквы и/или цифры</span>
+            </td>
+        </tr>
+    </table>
+
+</form>
+
+<script src="../src/js/public/Registration.js?<?php echo time(); ?>"></script>

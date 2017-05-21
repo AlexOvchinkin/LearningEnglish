@@ -1,0 +1,101 @@
+.registration {
+    display: flex;
+    flex-direction: column;
+    border-radius: 2px;
+    box-shadow: 0 0 5px 2px darkgray;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 80px);
+    align-items: center;
+    padding: 20px 40px;
+    background-color: white;
+}
+
+.registration__title {
+
+    color: #457070;
+    font-size: 34px;
+}
+
+.registration__notice {
+    color: red;
+    background-color: yellow;
+    border: 1px dashed lightblue;
+    display: none;
+    font-size: 18px;
+    font-style: italic;
+    padding: 5px 30px;
+    box-shadow: 0 0 10px 2px lightgray;
+    transform-transition: all 1s;
+}
+
+.registration__table {
+    color: #457070;
+}
+
+.registration__text {
+    font-size: 24px;
+}
+
+.registration__field {
+    font-size: 24px;
+    width: 350px;
+    border: none;
+    border-bottom: 2px solid #457070;
+}
+
+.registration__field:focus {
+    outline: none;
+}
+
+.registration__remember-box:checked::after {
+    background-image: url(http://res.cloudinary.com/dq2s2ibrg/image/upload/v1495363363/checked_csjwyq.png);
+}
+
+.registration__text:hover {
+    cursor: pointer;
+}
+
+.registration__remember-box::after {
+    content: "";
+    display: block;
+    width: 33px;
+    height: 33px;
+    transform: translateY(-33%);
+    background-color: white;
+    background-image: url(http://res.cloudinary.com/dq2s2ibrg/image/upload/v1495363472/unchecked_yja5ec.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+
+.registration__btn {
+    border: none;
+    background-color: #f56530;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+    margin-top: 40px;
+    padding: 10px;
+    border-radius: 2px;
+}
+
+.login__btn {
+    border: 1px solid #f56530;
+    background-color: white;
+    font-size: 20px;
+    color: #f56530;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 2px;
+}
+
+.registration__cell-btn {
+    text-align: right;
+}
+
+.registration__descr {
+    color: gray;
+    font-style: italic;
+    font-size: 18px;
+}
