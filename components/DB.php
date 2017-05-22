@@ -119,6 +119,35 @@ class DB {
 
         return 0;
     }
+
+    # function getUserByEmail
+    public static function getUserByEmail($email) {
+
+        if (!empty($email)) {
+            $connection = DB::getConnection();
+
+            if (isset($connection)) {
+                $sql = "SELECT 
+                          id
+                        FROM
+                          quick_english.user
+                        WHERE
+                            email = :email";
+
+                $stm = $connection->prepare($sql);
+                $stm->bindParam(':email', $email, PDO::PARAM_STR);
+                $stm->execute();
+
+                if ($row = $stm->fetch(PDO::FETCH_ASSOC)) {
+                    return $row['id'];
+                }
+
+                return 0;
+            }
+        }
+
+        return 0;
+    }
 }
 
 

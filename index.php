@@ -33,7 +33,7 @@ spl_autoload_register(function ($className) {
     }
 });
 
-CSRF::generateNewSecretPhrase();
+Validation::generateNewSecretPhrase();
 
 $router = new Router();
 $router->run();

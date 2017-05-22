@@ -1,17 +1,17 @@
 <?php
 
-class CSRF {
+class Validation {
 
     # function generateNewSecretPhrase
     public static function generateNewSecretPhrase() {
         if (!isset($_SESSION['csrf_secret'])) {
-            $secret = CSRF::generateRandString();
+            $secret = Validation::generateRandString();
             $_SESSION['csrf_secret'] = $secret;
         }
     }
 
     # function getSessionToken
-    public static function getSessionToken() {
+    public static function getCSRFToken() {
         if (isset($_SESSION['csrf_secret'])) {
             return password_hash($_SESSION['csrf_secret'], PASSWORD_DEFAULT);
         }
@@ -20,7 +20,7 @@ class CSRF {
     }
 
     # function checkToken
-    public static function checkToken($token) {
+    public static function checkCSRFToken($token) {
         if (isset($_SESSION['csrf_secret'])) {
             return password_verify($_SESSION['csrf_secret'], $token);
         }
@@ -41,5 +41,47 @@ class CSRF {
 
         return $code;
     }
+
+    # function cleanString
+    public static function cleanString($string) {
+        $newString = trim($string);
+        $newString = stripcslashes($newString);
+        $newString = strip_tags($newString);
+        $newString = htmlspecialchars($newString);
+
+        return $newString;
+    }
+
+    # function cleanPOST
+    public static function cleanPOST(&$post, $elements) {
+        foreach ($elements as $key) {
+            if (isset($post[$key])) {
+                $post[$key] = self::cleanString($post[$key]);
+            }
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

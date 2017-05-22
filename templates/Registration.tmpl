@@ -1,7 +1,19 @@
-<form class="registration" method="post" action="/registration/register">
+<form class="registration" method="post" action="/registration">
     <h2 class="registration__title">РЕГИСТРАЦИЯ</h2>
     <input type="hidden" name="csrf-token" value="{{ csrfToken }}">
-    <p class="registration__notice" id="notice"></p>
+
+    {% if success == true %}
+        <p class="registration__notice" id="notice"
+           style="display: block; background-color: lightgreen">
+            Отлично! Вы зарегистрированы!
+        </p>
+    {% else %}
+        {% if errorMsg is empty %}
+            <p class="registration__notice" id="notice"></p>
+        {% else %}
+            <p class="registration__notice" id="notice" style="display: block">{{ errorMsg }}</p>
+        {% endif %}
+    {% endif %}
 
     <table class="registration__table" cellspacing="10" cellpadding="5">
         <tr>

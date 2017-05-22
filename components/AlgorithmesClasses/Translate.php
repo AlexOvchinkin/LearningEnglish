@@ -21,7 +21,7 @@ class Translate extends Algorithm {
             'enWord' => $this->data['en_word'],
             'ruWord' => $this->data['ru_word'],
             'checkWords' => $this->parseCheckWords($this->data['check_words']),
-            'csrfToken' => CSRF::getSessionToken()
+            'csrfToken' => Validation::getCSRFToken()
         );
     }
 
