@@ -18,11 +18,11 @@
     <table class="registration__table" cellspacing="10" cellpadding="5">
         <tr>
             <td><label class="registration__text" for="name">Имя</label></td>
-            <td><input class="registration__field" type="text" id="name" name="name"></td>
+            <td><input class="registration__field" type="text" id="name" name="name" value="{{ name }}"></td>
         </tr>
         <tr>
             <td><label class="registration__text" for="email">Почта</label></td>
-            <td><input class="registration__field" type="email" id="email" name="email"></td>
+            <td><input class="registration__field" type="email" id="email" name="email" value="{{ email }}"></td>
         </tr>
         <tr>
             <td><label class="registration__text" for="password">Пароль</label></td>
@@ -64,4 +64,4 @@
 
 </form>
 
-<script src="../src/js/public/Registration.js?<?php echo time(); ?>"></script>
+<script src="../src/js/public/Registration.js?{{ time() }}"></script>

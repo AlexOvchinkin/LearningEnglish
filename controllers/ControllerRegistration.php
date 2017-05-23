@@ -19,7 +19,8 @@ class ControllerRegistration {
 
                     } elseif (!self::checkPassword($_POST['password'])
                         || !self::checkEmail($_POST['email'])
-                        || !self::checkLogin($_POST['name'])) {
+                        || !self::checkLogin($_POST['name'])
+                    ) {
 
                         $_SESSION['error-msg'] = 'Неверно указаны данные!';
 
@@ -30,23 +31,22 @@ class ControllerRegistration {
 
                             // установим флаг успеха для вьюшки
                             $_SESSION['success'] = true;
+
+                            // отправим пользователя на главную
+                            header('Location: /');
+                            exit();
+
                         } else {
                             $_SESSION['error-msg'] = 'Ошибка создания нового пользователя!';
                         }
-
                     }
-
                 } else {
                     $_SESSION['error-msg'] = 'Неверно указаны данные!';
                 }
-
-                unset($_POST['submit']);
-                header('Location: /registration');
-                exit();
             }
-        } else {
-            include_once ROOT . '/views/ViewRegistration.php';
         }
+
+        include_once ROOT . '/views/ViewRegistration.php';
     }
 
     # function checkEmail

@@ -6,6 +6,12 @@ include_once ROOT . '/vendor/autoload.php';
 $loader = new Twig_Loader_Filesystem(ROOT . '/templates');
 $twig = new Twig_Environment($loader, array());
 
+$function = new Twig_Function('time', function () {
+    return time();
+});
+
+$twig->addFunction($function);
+
 $errorMsg = '';
 $success = false;
 
@@ -21,6 +27,8 @@ if (isset($_SESSION['success'])) {
 
 echo $twig->render('Registration.tmpl', array(
     "csrfToken" => Validation::getCSRFToken(),
+    "name" => (isset($_POST['name'])) ? $_POST['name'] : '',
+    "email" => (isset($_POST['email'])) ? $_POST['email'] : '',
     "errorMsg" => $errorMsg,
     "success" => $success
 ));
