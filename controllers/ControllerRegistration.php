@@ -18,19 +18,22 @@ class ControllerRegistration {
                         $_SESSION['error-msg'] = 'Такой пользователь уже существует!';
 
                     } elseif (!self::checkPassword($_POST['password'])
-                        || !self::checkEmail($_POST['email'])) {
+                        || !self::checkEmail($_POST['email'])
+                        || !self::checkLogin($_POST['name'])) {
 
                         $_SESSION['error-msg'] = 'Неверно указаны данные!';
 
                     } else {
 
-                        ModelRegistration::createUser(array(
-                            'name' => $_POST['name'],
-                            'email' => $_POST['email'],
-                            'password' => $_POST['password']
-                        ));
+                        // создаем нового юзера
+                        if (ModelRegistration::createNewUser($_POST)) {
 
-                        $_SESSION['success'] = true;
+                            // установим флаг успеха для вьюшки
+                            $_SESSION['success'] = true;
+                        } else {
+                            $_SESSION['error-msg'] = 'Ошибка создания нового пользователя!';
+                        }
+
                     }
 
                 } else {
@@ -48,12 +51,21 @@ class ControllerRegistration {
 
     # function checkEmail
     static function checkEmail($email) {
-        return filter_var($email, FILTER_VALIDATE_EMAIL);
+        if(filter_var($email, FILTER_VALIDATE_EMAIL) && strlen($email) <= 45) {
+            return true;
+        }
+
+        return false;
     }
 
     # function checkPassword
     static function checkPassword($password) {
         return preg_match("/^[a-zA-Z0-9]+$/", $password) === 1;
+    }
+
+    # function checkLogin
+    static function checkLogin($login) {
+        return strlen($login) <= 20;
     }
 }
 

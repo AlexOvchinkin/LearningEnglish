@@ -13,7 +13,7 @@ class Validation {
     # function getSessionToken
     public static function getCSRFToken() {
         if (isset($_SESSION['csrf_secret'])) {
-            return password_hash($_SESSION['csrf_secret'], PASSWORD_DEFAULT);
+            return password_hash($_SESSION['csrf_secret'], PASSWORD_BCRYPT);
         }
 
         return null;
@@ -59,6 +59,18 @@ class Validation {
                 $post[$key] = self::cleanString($post[$key]);
             }
         }
+    }
+
+    # function generateUserToken
+    public static function getNewUserToken() {
+        $randomString = self::generateRandString();
+        return password_hash($randomString, PASSWORD_BCRYPT);
+    }
+
+    # function updateUserToken
+    public static function updateUserToken($token, $time) {
+        $_SESSION['user-token'] = $token;
+        setcookie('user-token', $token, time() + $time);
     }
 }
 

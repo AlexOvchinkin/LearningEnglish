@@ -13,6 +13,8 @@ define('MODE_END_TRAINING', 3);
 define('WRONG_ANSWER', 0);
 define('RIGHT_ANSWER', 1);
 
+define('LIVING_TIME_USER_TOKEN', 60*60*24*30);
+
 session_start();
 
 spl_autoload_register(function ($className) {
