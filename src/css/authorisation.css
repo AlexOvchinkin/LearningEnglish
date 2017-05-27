@@ -1,4 +1,4 @@
-.registration {
+.authorisation {
     display: flex;
     flex-direction: column;
     border-radius: 2px;
@@ -11,13 +11,13 @@
     background-color: white;
 }
 
-.registration__title {
+.authorisation__title {
 
     color: #457070;
     font-size: 34px;
 }
 
-.registration__notice {
+.authorisation__notice {
     color: red;
     background-color: yellow;
     border: 1px dashed lightblue;
@@ -29,30 +29,47 @@
     transform-transition: all 1s;
 }
 
-.registration__table {
+.authorisation__table {
     color: #457070;
 }
 
-.registration__text {
+.authorisation__text {
     font-size: 24px;
 }
 
-.registration__field {
+.authorisation__field {
     font-size: 24px;
     width: 350px;
     border: none;
     border-bottom: 2px solid #457070;
 }
 
-.registration__field:focus {
+.authorisation__field:focus {
     outline: none;
 }
 
-.registration__text:hover {
+.authorisation__remember-box:checked::after {
+    background-image: url(../image/checked.png);
+}
+
+.authorisation__text:hover {
     cursor: pointer;
 }
 
-.registration__btn {
+.authorisation__remember-box::after {
+    content: "";
+    display: block;
+    width: 33px;
+    height: 33px;
+    transform: translateY(-33%);
+    background-color: white;
+    background-image: url(../image/unchecked.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+
+.authorisation__btn {
     border: none;
     background-color: #f56530;
     font-size: 20px;
@@ -63,7 +80,7 @@
     border-radius: 2px;
 }
 
-.login__btn {
+.registration__btn {
     border: 1px solid #f56530;
     background-color: white;
     font-size: 20px;
@@ -73,12 +90,9 @@
     border-radius: 2px;
 }
 
-.registration__cell-btn {
+.authorisation__cell-btn {
     text-align: right;
 }
 
-.registration__descr {
-    color: gray;
-    font-style: italic;
-    font-size: 18px;
-}
+
+

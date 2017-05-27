@@ -1,18 +1,12 @@
+{% if success == false %}
 <form class="registration" method="post" action="/registration">
     <h2 class="registration__title">РЕГИСТРАЦИЯ</h2>
     <input type="hidden" name="csrf-token" value="{{ csrfToken }}">
 
-    {% if success == true %}
-        <p class="registration__notice" id="notice"
-           style="display: block; background-color: lightgreen">
-            Отлично! Вы зарегистрированы!
-        </p>
+    {% if errorMsg is empty %}
+        <p class="registration__notice" id="notice"></p>
     {% else %}
-        {% if errorMsg is empty %}
-            <p class="registration__notice" id="notice"></p>
-        {% else %}
-            <p class="registration__notice" id="notice" style="display: block">{{ errorMsg }}</p>
-        {% endif %}
+        <p class="registration__notice" id="notice" style="display: block">{{ errorMsg }}</p>
     {% endif %}
 
     <table class="registration__table" cellspacing="10" cellpadding="5">
@@ -32,14 +26,6 @@
             <td nowrap><label class="registration__text" for="password-repeat" id="password-repeat-label">Повторите
                 пароль</label></td>
             <td><input class="registration__field" type="password" id="password-repeat" name="password-repeat"></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <label class="registration__text" for="remember">Запомнить меня
-                    <input class="registration__remember-box" type="checkbox" id="remember" name="remember">
-                </label>
-            </td>
         </tr>
         <tr>
             <td></td>
@@ -65,3 +51,9 @@
 </form>
 
 <script src="../src/js/public/Registration.js?{{ time() }}"></script>
+
+{% else %}
+<form class="registration">
+    <p>РЕГИСТРАЦИЯ ПРОШЛА УСПЕШНО</p>
+</form>
+{% endif %}

@@ -56,6 +56,7 @@ class ControllerTraining extends Controller {
 
     # function actionShow
     public function actionShow() {
+
         if (isset($_SERVER['HTTP_REFERER']) && preg_match("~^" . SERVER_ROOT . "~", $_SERVER['HTTP_REFERER']) === 1) {
             if ($this->isWordArrayExist()) {
                 $wordsArray = $_SESSION['words_array'];

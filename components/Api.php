@@ -7,7 +7,7 @@ class Api {
             $headers = getallheaders();
 
             if (isset($headers['CSRF-Token'])) {
-                if (Validation::checkCSRFToken($headers['CSRF-Token'])) {
+                if (CSRF::checkCSRFToken($headers['CSRF-Token'])) {
                     if (isset($_POST['ANSWER'])) {
                         if (ControllerTraining::modifyWordsArray($_POST['ANSWER'])) {
                             echo '/training';

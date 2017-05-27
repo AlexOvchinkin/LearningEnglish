@@ -1,5 +1,5 @@
 <?php
-    $otherPage = true;
+    $page = PAGE_OTHER;
     include_once ROOT . '/views/Header.php';
 ?>
 

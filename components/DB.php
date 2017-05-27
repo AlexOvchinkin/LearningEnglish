@@ -164,70 +164,27 @@ class DB {
 
             try {
                 $sql = "insert into
-                          quick_english.user (login, password, email)
+                          quick_english.user (user_name, password, email)
                         values 
                           (:userName, :password, :email)";
 
                 $stm = $connection->prepare($sql);
 
-                $stm->bindParam('userName', $name);
-                $stm->bindParam('password', $password);
-                $stm->bindParam('email', $email);
+                $stm->bindParam(':userName', $name);
+                $stm->bindParam(':password', $password);
+                $stm->bindParam(':email', $email);
 
-                // добавим запись в БД и вернем ID юзера
-                if ($stm->execute()) {
-
-                    $sql = "SELECT
-                                id
-                            FROM
-                                quick_english.user
-                            WHERE email = :email";
-
-                    $stm = $connection->prepare($sql);
-                    $stm->bindParam('email', $email);
-                    $stm->execute();
-
-                    if ($row = $stm->fetch(PDO::FETCH_ASSOC)) {
-                        return $row['id'];
-                    }
-                }
-
-                return 0;
-
-            } catch (PDOException $e) {
-                return 0;
-            }
-        }
-    }
-
-    # function updateUserToken
-    public static function updateUserToken($userId, $token) {
-
-        try {
-
-            $connection = DB::getConnection();
-
-            if (isset($connection)) {
-
-                $sql = "UPDATE
-                            quick_english.user
-                        SET token = :token
-                        WHERE id = :userId";
-
-                $stm = $connection->prepare($sql);
-                $stm->bindParam('userId', $userId);
-                $stm->bindParam('token', $token);
-
+                // добавим запись в БД
                 if ($stm->execute()) {
                     return true;
                 }
+
+                return false;
+
+            } catch (PDOException $e) {
+                return false;
             }
-
-        } catch (PDOException $e) {
-            return false;
         }
-
-        return false;
     }
 }
 

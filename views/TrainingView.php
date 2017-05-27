@@ -1,5 +1,6 @@
 <?php
-$trainingPage = true;
+$page = PAGE_TRAINING;
+include_once ROOT . '/views/Header.php';
 
 include_once ROOT . '/vendor/autoload.php';
 $loader = new Twig_Loader_Filesystem(ROOT . '/templates');
@@ -10,8 +11,6 @@ $function = new Twig_Function('time', function () {
 });
 
 $twig->addFunction($function);
-
-include_once ROOT . '/views/Header.php';
 
 if ($mode == MODE_END_TRAINING) {
 

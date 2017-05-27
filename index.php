@@ -15,6 +15,13 @@ define('RIGHT_ANSWER', 1);
 
 define('LIVING_TIME_USER_TOKEN', 60*60*24*30);
 
+define('PAGE_MAIN', 1);
+define('PAGE_VOCABULARY', 2);
+define('PAGE_TRAINING', 3);
+define('PAGE_OTHER', 4);
+define('PAGE_REGISTRATION', 5);
+define('PAGE_AUTHORISATION', 6);
+
 session_start();
 
 spl_autoload_register(function ($className) {
@@ -35,7 +42,7 @@ spl_autoload_register(function ($className) {
     }
 });
 
-Validation::generateNewSecretPhrase();
+CSRF::generateSessionSecretPhrase();
 
 $router = new Router();
 $router->run();

@@ -1,5 +1,6 @@
 <?php
 
+$page = PAGE_MAIN;
 include_once ROOT . '/views/Header.php';
 
 ?>

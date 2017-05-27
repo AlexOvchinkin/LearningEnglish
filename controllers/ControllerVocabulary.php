@@ -9,6 +9,7 @@ class ControllerVocabulary extends Controller {
     }
 
     public function actionShow() {
+
         if (isset($_SESSION['words_array'])) {
             unset($_SESSION['words_array']);
         }

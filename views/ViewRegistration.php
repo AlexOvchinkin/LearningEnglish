@@ -1,5 +1,5 @@
 <?php
-$registrationPage = true;
+$page = PAGE_REGISTRATION;
 include_once ROOT . '/views/Header.php';
 
 include_once ROOT . '/vendor/autoload.php';
@@ -26,17 +26,14 @@ if (isset($_SESSION['success'])) {
 }
 
 echo $twig->render('Registration.tmpl', array(
-    "csrfToken" => Validation::getCSRFToken(),
+    "csrfToken" => CSRF::getCSRFToken(),
     "name" => (isset($_POST['name'])) ? $_POST['name'] : '',
     "email" => (isset($_POST['email'])) ? $_POST['email'] : '',
     "errorMsg" => $errorMsg,
     "success" => $success
 ));
 
-if ($success) {
-    header("refresh: 2; url=/");
-    exit();
-}
+include_once ROOT . '/views/Footer.php';
 
 
 

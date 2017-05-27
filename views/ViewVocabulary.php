@@ -1,5 +1,5 @@
 <?php
-    $vocabularyPage = true;
+    $page = PAGE_VOCABULARY;
     include_once ROOT . '/views/Header.php';
 ?>
 

@@ -1,0 +1,37 @@
+<form class="authorisation"  method="post"  action="/authorisation">
+    <h2 class="authorisation__title">АВТОРИЗАЦИЯ</h2>
+    <input type="hidden" class="csrf-token" name="csrf-token" value="{{ csrfToken }}">
+    <p class="authorisation__notice" id="notice"></p>
+
+    <table class="authorisation__table" cellspacing="10" cellpadding="5">
+        <tr>
+            <td><label class="authorisation__text">Почта</label></td>
+            <td><input class="authorisation__field" type="email" id="email" name="email"></td>
+        </tr>
+        <tr>
+            <td><label class="authorisation__text">Пароль</label></td>
+            <td><input class="authorisation__field" type="password" id="password" name="password"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <label class="authorisation__text" for="remember">Запомнить меня
+                    <input class="authorisation__remember-box" type="checkbox" id="remember" name="remember">
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="authorisation__cell-btn"><button class="authorisation__btn" type="submit" name="submit-authorisation">
+                ВОЙТИ
+            </button></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="authorisation__cell-btn"><button class="registration__btn" type="submit" name="submit-registration">
+                РЕГИСТРАЦИЯ
+            </button></td>
+        </tr>
+    </table>
+
+</form>

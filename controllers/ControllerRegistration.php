@@ -4,28 +4,30 @@ class ControllerRegistration {
 
     public function actionShow() {
 
+        // если метод POST
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
+            // если форма пришла "сабмитом" и с правильным csrf-токеном
             if (isset($_POST['submit']) && isset($_POST['csrf-token'])
-                && Validation::checkCSRFToken($_POST['csrf-token'])) {
+                && CSRF::checkCSRFToken($_POST['csrf-token'])) {
 
                 if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['password'])) {
 
-                    Validation::cleanPOST($_POST, array('name', 'email', 'password'));
-
+                    // проверим есть ли уже такой пользователь в базе
                     if (ModelRegistration::isUserExists($_POST['email'])) {
 
                         $_SESSION['error-msg'] = 'Такой пользователь уже существует!';
 
                     } elseif (!self::checkPassword($_POST['password'])
                         || !self::checkEmail($_POST['email'])
-                        || !self::checkLogin($_POST['name'])
-                    ) {
+                        || !self::checkLogin($_POST['name'])) {
 
+                        // провалидировали поля
                         $_SESSION['error-msg'] = 'Неверно указаны данные!';
 
                     } else {
 
+                        // если сюда дошли - все норм ...
                         // создаем нового юзера
                         if (ModelRegistration::createNewUser($_POST)) {
 
@@ -33,8 +35,8 @@ class ControllerRegistration {
                             $_SESSION['success'] = true;
 
                             // отправим пользователя на главную
-                            header('Location: /');
-                            exit();
+                            //header('Location: /');
+                            //exit();
 
                         } else {
                             $_SESSION['error-msg'] = 'Ошибка создания нового пользователя!';
