@@ -14,6 +14,31 @@ class Selection {
         this.element = element;
         this.csrfToken = this.element.querySelector('.csrf-token');
 
+        this.soundBtn = this.element.querySelector('.selection__sound-btn');
+
+        this.correctSound = document.getElementById('correct-sound');
+        this.wrongSound = document.getElementById('wrong-sound');
+        this.mainSound = document.getElementById('main-sound');
+
+        if (this.soundBtn) {
+
+            this.soundBtn.addEventListener('click', (ev) => {
+
+                if (this.mainSound.hasAttribute('data-enword')) {
+
+                    let enWord = this.mainSound.dataset.enword;
+
+                    if (this.mainSound && enWord) {
+
+                        this.mainSound.innerHTML =
+                            '<audio src="../src/sound/'
+                            + enWord
+                            + '.mp3" id="correct-sound" autoplay></audio>';
+                    }
+                }
+            });
+        }
+
         this.pickList = element.querySelector(".selection__pick-list");
         this.pickList.addEventListener("click", this.pickListClick.bind(this));
     }
@@ -32,9 +57,13 @@ class Selection {
                 if (checkLetter == pickedLetter) {
                     this.showRightAnswer(ev, this.currentLetter);
                     this.currentLetter++;
+                    this.correctSound.innerHTML =
+                        '<audio src="../src/sound/game_sound_correct.mp3" id="correct-sound" autoplay></audio>';
                 } else {
                     this.showWrongAnswer(ev);
                     this.rightAnswer = false;
+                    this.wrongSound.innerHTML =
+                        '<audio src="../src/sound/game-sound-wrong.mp3" id="wrong-sound" autoplay></audio>';
                 }
             }
 

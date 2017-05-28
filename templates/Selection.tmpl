@@ -16,11 +16,19 @@
             {% endif %}
         {% endfor %}
     </ul>
+    <div class="selection__sound-btn">ПРОСЛУШАТЬ ЕЩЕ РАЗ</div>
     <ul class="selection__pick-list">
         {% for item in pickWord %}
             <li class="selection__pick-word">{{ item }}</li>
         {% endfor %}
     </ul>
+    <p class="selection__description">
+        <sup>*&nbsp;</sup>
+        соберите слово, выбирая буквы в правильном порядке
+    </p>
+    <audio src="../src/sound/{{ enWord }}.mp3" id="main-sound" data-enWord="{{ enWord }}"  autoplay></audio>
+    <audio src="../src/sound/game_sound_correct.mp3" id="correct-sound"></audio>
+    <audio src="../src/sound/game-sound-wrong.mp3" id="wrong-sound"></audio>
 </section>
 
 <script src="../src/js/public/Selection.js?{{ time() }}"></script>

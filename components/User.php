@@ -76,7 +76,18 @@ class User {
 
     # function checkSessionUserToken
     public static function checkSessionUserToken($token) {
+
         if (isset($_SESSION['user-token']) && $_SESSION['user-token'] == $token) {
+            return true;
+        }
+
+        return false;
+    }
+
+    # function checkSessionUserID
+    public static function checkSessionUserID($id) {
+
+        if (isset($_SESSION['user-id']) && $_SESSION['user-id'] == $id) {
             return true;
         }
 
@@ -105,7 +116,9 @@ class User {
     # function isAuthorized
     public static function isAuthorized() {
 
-        if (isset($_COOKIE['user-token']) && User::checkSessionUserToken($_COOKIE['user-token'])) {
+        if (isset($_COOKIE['user-token']) && self::checkSessionUserToken($_COOKIE['user-token'])
+            && isset($_COOKIE['user-id']) && self::checkSessionUserID($_COOKIE['user-id'])) {
+
             return true;
         }
 

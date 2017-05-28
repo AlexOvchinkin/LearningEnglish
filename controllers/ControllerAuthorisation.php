@@ -44,6 +44,9 @@ class ControllerAuthorisation extends Controller {
                             // запишем в сессию имя пользователя
                             $_SESSION['user-name'] = $userName;
 
+                            // запишем в сессию id пользователя
+                            $_SESSION['user-id'] = $userID;
+
                             // отправим на главную
                             header('Location: /');
                             exit();
@@ -88,6 +91,9 @@ class ControllerAuthorisation extends Controller {
 
                             // запишем в сессию имя пользователя
                             $_SESSION['user-name'] = $userName;
+
+                            // запишем в сессию id пользователя
+                            $_SESSION['user-id'] = $userID;
 
                             // отправим на главную
                             header('Location: /');

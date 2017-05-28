@@ -22,6 +22,9 @@
     background-color: white;
     margin: 0 auto;
     color: #454545;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .translate__title-main {
@@ -43,8 +46,24 @@
     font-size: 50px;
     text-align: center;
     font-family: 'Roboto', sans-serif;
-    margin: 80px 0;
+    margin: 60px 0 30px 0;
     color: green;
+}
+
+.translate__sound-btn {
+    text-align: center;
+    margin-bottom: 40px;
+    background-color: coral;
+    border-radius: 2px;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    padding: 10px 20px;
+}
+
+.translate__sound-btn:hover {
+    cursor: pointer;
+    background-color: #dd7550;
 }
 
 .translate__list {
@@ -65,7 +84,8 @@
     font-size: 22px;
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
-    border-bottom: 4px dashed darkseagreen;
+    border: 1px solid darkseagreen;
+    border-radius: 2px;
     flex-wrap: wrap;
 }
 
@@ -84,4 +104,5 @@
     color: gray;
     font-style: italic;
     font-size: 20px;
+    align-self: flex-start;
 }

@@ -5,6 +5,7 @@ define('SERVER_ROOT', 'http://localhost/');
 
 define('NUM_WORDS_PER_STEP', 5);
 define('DIFF_SUCCESS_DATE', 7);
+define('PERCENT_GROW', 20);
 
 define('MODE_TRAINING', 1);
 define('MODE_NO_WORDS', 2);

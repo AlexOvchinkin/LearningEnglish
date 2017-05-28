@@ -5,6 +5,7 @@
     <p class="translate__main-word" data-translate="{{ ruWord }}">
         {{ enWord }}
     </p>
+    <div class="translate__sound-btn">ПРОСЛУШАТЬ ЕЩЕ РАЗ</div>
     <ul class="translate__list">
         {% for word in checkWords %}
         <li class="translate__check-word"  data-translate="{{ word.ru }}"  data-check="true">
@@ -17,12 +18,15 @@
     </ul>
     <p class="translate__description">
         <sup>*&nbsp;</sup>
-        выберите мышкой слово ... или нажмите номер слова на клавиатуре
+        выберите мышкой слово-перевод ... или нажмите его номер на клавиатуре
     </p>
     <p class="translate__description">
         <sup>**&nbsp;</sup>
         не забудьте включить звук, чтобы слышать произношение
     </p>
+    <audio src="../src/sound/{{ enWord }}.mp3" id="main-sound" data-enWord="{{ enWord }}" autoplay></audio>
+    <audio src="../src/sound/game_sound_correct.mp3" id="correct-sound"></audio>
+    <audio src="../src/sound/game-sound-wrong.mp3" id="wrong-sound"></audio>
 </section>
 
 <script src="../src/js/public/Translate.js?{{ time() }}"></script>

@@ -5,7 +5,13 @@ class ControllerTraining extends Controller {
     private $model;
 
     public function __construct() {
-        $this->model = new ModelTraining(1);
+
+        if (isset($_SESSION['user-id'])) {
+            $this->model = new ModelTraining($_SESSION['user-id']);
+        } else {
+            header('Location: /authorisation');
+            exit();
+        }
     }
 
     # function isWordArrayExist
@@ -36,22 +42,20 @@ class ControllerTraining extends Controller {
 
     # function modifyWordsArray
     public static function modifyWordsArray($status) {
-        if ($status == RIGHT_ANSWER) {
-            if (isset($_SESSION['words_array'])) {
-                array_shift($_SESSION['words_array']);
-            }
 
-            return true;
-        } elseif ($status == WRONG_ANSWER) {
-            if (isset($_SESSION['words_array'])) {
-                $currentElement = array_shift($_SESSION['words_array']);
+        if (isset($_SESSION['words_array'])) {
+
+            $currentElement = array_shift($_SESSION['words_array']);
+            ModelTraining::setWordStatus($_SESSION['user-id'], $currentElement['id'], $status);
+
+            if ($status == WRONG_ANSWER) {
                 array_push($_SESSION['words_array'], $currentElement);
             }
 
             return true;
-        } else {
-            return false;
         }
+
+        return false;
     }
 
     # function actionShow
